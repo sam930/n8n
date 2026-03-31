@@ -1,7 +1,7 @@
 FROM n8nio/n8n:latest
 
-# 讓 n8n 監聽 Render 分配的通訊埠
-ENV N8N_PORT=5678
+# Render 通常需要指定 Port，n8n 預設是 5678
+EXPOSE 5678
 
-# 啟動 n8n
-CMD ["n8n", "start"]
+# 確保啟動指令使用完整路徑或正確的 entrypoint
+ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
